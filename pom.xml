@@ -1,0 +1,25 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>app</artifactId>
+  <version>1</version>
+
+  <properties>
+    <src.dir>src</src.dir>
+  </properties>
+  <build>
+    <sourceDirectory>${src.dir}</sourceDirectory>
+  </build>
+  
+  <dependencies>
+  
+    <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+    <dependency>
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <version>8.4.0</version>
+    </dependency>
+
+  </dependencies>
+</project>
