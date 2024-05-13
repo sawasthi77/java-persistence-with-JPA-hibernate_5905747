@@ -10,7 +10,7 @@ public class Main {
     System.out.println("Hello from Java!");
 
     try {
-      Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/mariadb?" +
+      Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost/mariadb?" +
           "user=root&password=mariadb");
       System.out.println("Connection created");
 
