@@ -1,11 +1,14 @@
--- Create a table in the database
-CREATE TABLE MyTable (
-  ID INTEGER NOT NULL AUTO_INCREMENT,
-  Item VARCHAR(255),
-  PRIMARY KEY (ID)
+-- Create a database
+CREATE DATABASE IF NOT EXISTS library;
+-- Use the database
+USE library;
+-- Crate tables in the database
+CREATE TABLE IF NOT EXISTS book(
+  book_id INT AUTO_INCREMENT PRIMARY KEY,
+  book_name VARCHAR(255),
+  isbn VARCHAR(255)
 );
-
--- Populate the table
-INSERT INTO MyTable (Item) VALUES ('One'), ('Two'), ('Three');
-
--- After running this setup file, run the contents of mariadb-test.sql. Just open the file and click 
+CREATE TABLE IF NOT EXISTS author(
+  author_id INT AUTO_INCREMENT PRIMARY KEY,
+  author_name VARCHAR(255)
+);
