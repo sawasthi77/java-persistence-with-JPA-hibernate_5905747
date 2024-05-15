@@ -1,7 +1,21 @@
 package com.mycompany.app;
 
+import java.util.HashMap;
+
+import org.hibernate.jpa.HibernatePersistenceProvider;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import com.mycompany.app.persistence.DemoPersistenceUnitInfo;
+
 public class Main {
   public static void main(String[] args) {
-    System.out.println("Hello from Java!");
+    // EntityManagerFactory emf = new HibernatePersistenceProvider()
+    // .createContainerEntityManagerFactory(new DemoPersistenceUnitInfo(), new
+    // HashMap<>())
+
+    // EntityManager em = emf.createEntityManager(); // Represent the persistence
+    // context
   }
 }
