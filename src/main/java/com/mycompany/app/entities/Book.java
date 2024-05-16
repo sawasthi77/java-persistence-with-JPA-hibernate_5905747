@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 @Entity
+@Table(name = "book")
 public class Book {
 
   @Column(name = "book_id")
