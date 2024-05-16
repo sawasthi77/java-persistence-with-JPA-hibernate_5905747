@@ -10,3 +10,4 @@ public class Main {
 
     EntityManager em = emf.createEntityManager(); // Represent the persistence context
 }
+}
