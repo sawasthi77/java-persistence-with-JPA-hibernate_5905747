@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import com.mycompany.app.entities.Book;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
