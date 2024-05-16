@@ -9,4 +9,5 @@ public class Main {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("library_persistence_unit");
 
     EntityManager em = emf.createEntityManager(); // Represent the persistence context
+  }
 }
