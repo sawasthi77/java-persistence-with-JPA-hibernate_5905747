@@ -12,6 +12,7 @@ public class Main {
 
     // createInstance(emf);
     //findAndUpdateInstance(emf);
+    detachAndReattachInstance(emf);
 
   }
 
@@ -41,6 +42,18 @@ public class Main {
       b1.setName("my new book");
       System.out.println(b1);
 
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void detachAndReattachInstance(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+      
       em.getTransaction().commit();
     } finally {
       em.close();
