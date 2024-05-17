@@ -11,7 +11,7 @@ public class Main {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("library_persistence_unit");
 
     // createInstance(emf);
-    findAndUpdateInstance(emf);
+    // findAndUpdateInstance(emf);
 
   }
 
