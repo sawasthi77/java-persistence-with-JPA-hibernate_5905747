@@ -10,7 +10,8 @@ public class Main {
   public static void main(String[] args) {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("library_persistence_unit");
 
-    //createInstance(emf);
+    // createInstance(emf);
+    findAndUpdateInstance(emf);
 
   }
 
@@ -24,6 +25,18 @@ public class Main {
       b.setName("my book3");
       b.setIsbn("333-456");
       em.persist(b);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void findAndUpdateInstance(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
 
       em.getTransaction().commit();
     } finally {
