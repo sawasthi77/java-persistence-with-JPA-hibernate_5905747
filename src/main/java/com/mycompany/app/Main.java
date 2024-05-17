@@ -11,7 +11,8 @@ public class Main {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("library_persistence_unit");
 
     // createInstance(emf);
-    findAndUpdateInstance(emf);
+    // findAndUpdateInstance(emf);
+    detachAndReattachInstance(emf);
 
   }
 
@@ -47,4 +48,21 @@ public class Main {
     }
   }
 
+  private static void detachAndReattachInstance(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+      Book b1 = new Book();
+      b1.setId(1);
+      b1.setName("my newest book");
+      b1.setIsbn("123-456");
+      em.merge(b1);
+      em.detach(b1);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
 }
