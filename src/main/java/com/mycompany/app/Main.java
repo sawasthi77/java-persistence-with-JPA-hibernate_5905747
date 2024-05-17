@@ -10,19 +10,25 @@ public class Main {
   public static void main(String[] args) {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("library_persistence_unit");
 
+    createInstance(emf);
+
+  }
+
+  private static void createInstance(EntityManagerFactory emf) {
     EntityManager em = emf.createEntityManager(); // Represent the persistence context
 
     try {
       em.getTransaction().begin();
 
       Book b = new Book();
-      b.setName("my book");
-      b.setIsbn("123-456");
+      b.setName("my book3");
+      b.setIsbn("333-456");
       em.persist(b);
 
       em.getTransaction().commit();
     } finally {
       em.close();
     }
-}
+  }
+
 }
