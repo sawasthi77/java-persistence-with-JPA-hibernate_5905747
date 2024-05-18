@@ -15,7 +15,8 @@ public class Main {
     // detachAndReattachInstance(emf);
     // removeInstance(emf);
     // useGetReference(emf);
-    useRefresh(emf);
+    // useRefresh(emf);
+    createEntityWithComposedPK(emf);
 
   }
 
@@ -115,5 +116,18 @@ public class Main {
     } finally {
       em.close();
     }
+  }
+
+  private static void createEntityWithComposedPK(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+
   }
 }
