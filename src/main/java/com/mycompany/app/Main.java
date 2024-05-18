@@ -12,7 +12,8 @@ public class Main {
 
     // createInstance(emf);
     // findAndUpdateInstance(emf);
-    detachAndReattachInstance(emf);
+    // detachAndReattachInstance(emf);
+    removeInstance(emf);
 
   }
 
@@ -59,6 +60,18 @@ public class Main {
       b1.setIsbn("123-456");
       em.merge(b1);
       em.detach(b1);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void removeInstance(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
 
       em.getTransaction().commit();
     } finally {
