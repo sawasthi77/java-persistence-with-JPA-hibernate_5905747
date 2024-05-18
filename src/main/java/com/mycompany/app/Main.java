@@ -1,6 +1,9 @@
 package com.mycompany.app;
 
 import com.mycompany.app.entities.Book;
+import com.mycompany.app.entities.BookType;
+import com.mycompany.app.entities.Item;
+import com.mycompany.app.entities.keys.ItemKey;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -15,7 +18,8 @@ public class Main {
     // detachAndReattachInstance(emf);
     // removeInstance(emf);
     // useGetReference(emf);
-    useRefresh(emf);
+    // useRefresh(emf);
+    createEntityWithComposedPK(emf);
 
   }
 
@@ -115,5 +119,34 @@ public class Main {
     } finally {
       em.close();
     }
+  }
+
+  private static void createEntityWithComposedPK(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+      // BookType bt = new BookType();
+      // bt.setCode("C001");
+      // bt.setSubCode("SC001");
+      // bt.setName("Fiction-Horror");
+
+      // em.persist(bt);
+
+      ItemKey id = new ItemKey();
+      id.setCode("ABC");
+      id.setNumber(100);
+
+      Item i = new Item();
+      i.setId(id);
+      i.setName("ABC-100");
+
+      em.persist(i);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+
   }
 }
