@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import com.mycompany.app.entities.Book;
-import com.mycompany.app.entities.BookType;
 import com.mycompany.app.entities.Item;
 import com.mycompany.app.entities.keys.ItemKey;
 
@@ -19,7 +18,8 @@ public class Main {
     // removeInstance(emf);
     // useGetReference(emf);
     // useRefresh(emf);
-    createEntityWithComposedPK(emf);
+    // createEntityWithComposedPK(emf);
+    oneToOneRelationship(emf);
 
   }
 
@@ -148,5 +148,18 @@ public class Main {
       em.close();
     }
 
+  }
+
+  private static void oneToOneRelationship(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      em.getTransaction().commit();
+
+    } finally {
+      em.close();
+    }
   }
 }
