@@ -4,6 +4,7 @@ import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
 import com.mycompany.app.entities.BookType;
 import com.mycompany.app.entities.Item;
+import com.mycompany.app.entities.Review;
 import com.mycompany.app.entities.keys.ItemKey;
 
 import jakarta.persistence.EntityManager;
@@ -21,7 +22,8 @@ public class Main {
     // useGetReference(emf);
     // useRefresh(emf);
     // createEntityWithComposedPK(emf);
-    oneToOneRelationship(emf);
+    // oneToOneRelationship(emf);
+    oneToManyRelationship(emf);
 
   }
 
@@ -169,6 +171,28 @@ public class Main {
 
       em.persist(book);
       em.persist(author);
+
+      em.getTransaction().commit();
+
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void oneToManyRelationship(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      Book book = new Book();
+      book.setName("book 123");
+      book.setIsbn("123-123");
+
+      Author author = em.find(Author.class, 1);
+      book.setAuthor(author);
+
+      em.persist(book);
 
       em.getTransaction().commit();
 
