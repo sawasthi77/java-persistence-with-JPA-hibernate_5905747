@@ -5,8 +5,10 @@ import java.util.List;
 import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
 import com.mycompany.app.entities.BookType;
+import com.mycompany.app.entities.Group;
 import com.mycompany.app.entities.Item;
 import com.mycompany.app.entities.Review;
+import com.mycompany.app.entities.User;
 import com.mycompany.app.entities.keys.ItemKey;
 
 import jakarta.persistence.EntityManager;
@@ -25,7 +27,8 @@ public class Main {
     // useRefresh(emf);
     // createEntityWithComposedPK(emf);
     // oneToOneRelationship(emf);
-    oneToManyRelationship(emf);
+    // oneToManyRelationship(emf);
+    manyToManyRelationship(emf);
 
   }
 
@@ -207,6 +210,34 @@ public class Main {
 
       em.getTransaction().commit();
 
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void manyToManyRelationship(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      User user1 = new User();
+      user1.setName("User1");
+      User user2 = new User();
+      user2.setName("User2");
+
+      Group group1 = new Group();
+      group1.setName("Group1");
+      Group group2 = new Group();
+      group2.setName("Group2");
+
+      group1.setUsers(List.of(user1, user2));
+      group2.setUsers(List.of(user1));
+
+      em.persist(group1);
+      em.persist(group2);
+
+      em.getTransaction().commit();
     } finally {
       em.close();
     }
