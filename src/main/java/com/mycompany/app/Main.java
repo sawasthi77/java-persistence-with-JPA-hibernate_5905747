@@ -7,7 +7,10 @@ import com.mycompany.app.entities.Book;
 import com.mycompany.app.entities.BookType;
 import com.mycompany.app.entities.Group;
 import com.mycompany.app.entities.Item;
+import com.mycompany.app.entities.Member;
 import com.mycompany.app.entities.Review;
+import com.mycompany.app.entities.Student;
+import com.mycompany.app.entities.Teacher;
 import com.mycompany.app.entities.User;
 import com.mycompany.app.entities.keys.ItemKey;
 
@@ -28,7 +31,8 @@ public class Main {
     // createEntityWithComposedPK(emf);
     // oneToOneRelationship(emf);
     // oneToManyRelationship(emf);
-    manyToManyRelationship(emf);
+    // manyToManyRelationship(emf);
+    mappedSuperclassStrategy(emf);
 
   }
 
@@ -236,6 +240,29 @@ public class Main {
 
       em.persist(group1);
       em.persist(group2);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void mappedSuperclassStrategy(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      Student s = new Student();
+      s.setName("John");
+      s.setStudentCode("S001");
+
+      Teacher t = new Teacher();
+      t.setName("David");
+      t.setTeacherCode("T001");
+
+      em.persist(s);
+      em.persist(t);
 
       em.getTransaction().commit();
     } finally {
