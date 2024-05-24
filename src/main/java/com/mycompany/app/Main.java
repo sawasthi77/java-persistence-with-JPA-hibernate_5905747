@@ -25,7 +25,8 @@ public class Main {
     // useRefresh(emf);
     // createEntityWithComposedPK(emf);
     // oneToOneRelationship(emf);
-    oneToManyRelationship(emf);
+    // oneToManyRelationship(emf);
+    manyToManyRelationship(emf);
 
   }
 
@@ -207,6 +208,18 @@ public class Main {
 
       em.getTransaction().commit();
 
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void manyToManyRelationship(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      em.getTransaction().commit();
     } finally {
       em.close();
     }
