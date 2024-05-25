@@ -10,8 +10,8 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Table(name = "genre")
-
-public class Genre {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Genre {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
