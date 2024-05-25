@@ -11,7 +11,7 @@ import jakarta.persistence.InheritanceType;
 @Entity
 @Table(name = "genre")
 
-public class Genre {
+public abstract class Genre {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
