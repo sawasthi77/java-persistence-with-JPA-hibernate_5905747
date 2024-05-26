@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cash")
-public class Cash extends Payment {
+public class CashPayment extends Payment {
 
   private String code;
 

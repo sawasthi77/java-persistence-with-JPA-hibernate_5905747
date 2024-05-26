@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "card")
-public class Card extends Payment {
+public class CardPayment extends Payment {
 
   @Column(name = "card_number")
   private String cardNumber;
