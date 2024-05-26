@@ -1,4 +1,5 @@
 -- Create a database
+DROP DATABASE IF EXISTS library;
 CREATE DATABASE IF NOT EXISTS library;
 -- Use the database
 USE library;
