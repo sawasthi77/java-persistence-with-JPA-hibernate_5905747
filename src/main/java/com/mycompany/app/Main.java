@@ -9,8 +9,6 @@ import com.mycompany.app.entities.Book;
 import com.mycompany.app.entities.CardPayment;
 import com.mycompany.app.entities.CashPayment;
 import com.mycompany.app.entities.Category;
-import com.mycompany.app.entities.CardPayment;
-import com.mycompany.app.entities.CashPayment;
 import com.mycompany.app.entities.Fiction;
 import com.mycompany.app.entities.Field;
 import com.mycompany.app.entities.Group;
