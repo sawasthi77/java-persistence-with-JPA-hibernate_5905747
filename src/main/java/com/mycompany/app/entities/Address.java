@@ -1,7 +1,9 @@
 package com.mycompany.app.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
+@Embeddable
 public class Address {
 
   private String street;
