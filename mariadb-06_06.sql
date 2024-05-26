@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS field_category(
 );
 ALTER TABLE IF EXISTS author
 ADD COLUMN street VARCHAR(255),
-  city VARCHAR(255),
-  postal_code VARCHAR(255);
+  ADD COLUMN city VARCHAR(255),
+  ADD COLUMN postal_code VARCHAR(255);
