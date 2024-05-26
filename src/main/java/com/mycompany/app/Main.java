@@ -2,9 +2,7 @@ package com.mycompany.app;
 
 import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
-import com.mycompany.app.entities.BookType;
 import com.mycompany.app.entities.Item;
-import com.mycompany.app.entities.Review;
 import com.mycompany.app.entities.keys.ItemKey;
 
 import jakarta.persistence.EntityManager;
