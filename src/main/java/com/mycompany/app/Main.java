@@ -37,8 +37,9 @@ public class Main {
     // mappedSuperclassStrategy(emf);
     // singleTableStrategy(emf);
     // joinedTableStrategy(emf);
-    tablePerClassStrategy(emf);
-
+    // tablePerClassStrategy(emf);
+    compositionWithAssociation(emf);
+    compositionWithEmbadable(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -339,6 +340,30 @@ public class Main {
 
       em.persist(cash);
       em.persist(card);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void compositionWithAssociation(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void compositionWithEmbadable(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
 
       em.getTransaction().commit();
     } finally {
