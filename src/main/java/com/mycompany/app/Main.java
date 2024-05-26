@@ -30,7 +30,8 @@ public class Main {
     // manyToManyRelationship(emf);
     // mappedSuperclassStrategy(emf);
     // singleTableStrategy(emf);
-    joinedTableStrategy(emf);
+    // joinedTableStrategy(emf);
+    tablePerClassStrategy(emf);
 
   }
 
@@ -302,5 +303,17 @@ public class Main {
       em.close();
     }
 
+  }
+
+  private static void tablePerClassStrategy(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
   }
 }
