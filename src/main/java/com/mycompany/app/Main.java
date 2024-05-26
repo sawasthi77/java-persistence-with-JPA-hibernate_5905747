@@ -6,8 +6,6 @@ import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
 import com.mycompany.app.entities.CardPayment;
 import com.mycompany.app.entities.CashPayment;
-// import com.mycompany.app.entities.CardPayment;
-// import com.mycompany.app.entities.CashPayment;
 import com.mycompany.app.entities.Fiction;
 import com.mycompany.app.entities.Group;
 import com.mycompany.app.entities.Item;
