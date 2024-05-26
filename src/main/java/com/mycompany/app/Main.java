@@ -4,15 +4,15 @@ import java.util.List;
 
 import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
-import com.mycompany.app.entities.BookType;
+import com.mycompany.app.entities.CardPayment;
+import com.mycompany.app.entities.CashPayment;
+// import com.mycompany.app.entities.CardPayment;
+// import com.mycompany.app.entities.CashPayment;
+import com.mycompany.app.entities.Fiction;
 import com.mycompany.app.entities.Group;
 import com.mycompany.app.entities.Item;
-import com.mycompany.app.entities.Member;
+import com.mycompany.app.entities.NonFiction;
 import com.mycompany.app.entities.Review;
-import com.mycompany.app.entities.Student;
-import com.mycompany.app.entities.Student2;
-import com.mycompany.app.entities.Teacher;
-import com.mycompany.app.entities.Teacher2;
 import com.mycompany.app.entities.User;
 import com.mycompany.app.entities.keys.ItemKey;
 
@@ -35,7 +35,9 @@ public class Main {
     // oneToManyRelationship(emf);
     // manyToManyRelationship(emf);
     // mappedSuperclassStrategy(emf);
-    singleTableStrategy(emf);
+    // singleTableStrategy(emf);
+    // joinedTableStrategy(emf);
+    tablePerClassStrategy(emf);
 
   }
 
@@ -250,45 +252,93 @@ public class Main {
     }
   }
 
-  private static void mappedSuperclassStrategy(EntityManagerFactory emf) {
+  // private static void mappedSuperclassStrategy(EntityManagerFactory emf) {
+  // EntityManager em = emf.createEntityManager();
+
+  // try {
+  // em.getTransaction().begin();
+
+  // Student s = new Student();
+  // s.setName("John");
+  // s.setStudentCode("S001");
+
+  // Teacher t = new Teacher();
+  // t.setName("David");
+  // t.setTeacherCode("T001");
+
+  // em.persist(s);
+  // em.persist(t);
+
+  // em.getTransaction().commit();
+  // } finally {
+  // em.close();
+  // }
+  // }
+
+  // private static void singleTableStrategy(EntityManagerFactory emf) {
+  // EntityManager em = emf.createEntityManager();
+
+  // try {
+  // em.getTransaction().begin();
+
+  // Student2 s = new Student2();
+  // s.setName("John");
+  // s.setStudentCode("S001");
+
+  // Teacher2 t = new Teacher2();
+  // t.setName("David");
+  // t.setTeacherCode("T001");
+
+  // em.persist(s);
+  // em.persist(t);
+
+  // em.getTransaction().commit();
+  // } finally {
+  // em.close();
+  // }
+  // }
+
+  private static void joinedTableStrategy(EntityManagerFactory emf) {
     EntityManager em = emf.createEntityManager();
 
     try {
       em.getTransaction().begin();
+      Fiction f = new Fiction();
+      f.setCode("F001");
+      f.setSetting("Forest");
 
-      Student s = new Student();
-      s.setName("John");
-      s.setStudentCode("S001");
+      NonFiction nf = new NonFiction();
+      nf.setCode("NF001");
+      nf.setTopic("Science");
 
-      Teacher t = new Teacher();
-      t.setName("David");
-      t.setTeacherCode("T001");
-
-      em.persist(s);
-      em.persist(t);
+      em.persist(f);
+      em.persist(nf);
 
       em.getTransaction().commit();
     } finally {
       em.close();
     }
+
   }
 
-  private static void singleTableStrategy(EntityManagerFactory emf) {
+  private static void tablePerClassStrategy(EntityManagerFactory emf) {
     EntityManager em = emf.createEntityManager();
 
     try {
       em.getTransaction().begin();
 
-      Student2 s = new Student2();
-      s.setName("John");
-      s.setStudentCode("S001");
+      CardPayment card = new CardPayment();
+      card.setId(100);
+      card.setAmount(1000);
+      card.setCardNumber("1234 5678 5677 3456");
 
-      Teacher2 t = new Teacher2();
-      t.setName("David");
-      t.setTeacherCode("T001");
+      CashPayment cash = new CashPayment();
+      cash.setId(101);
+      cash.setAmount(2000);
+      cash.setCode("CA001");
 
-      em.persist(s);
-      em.persist(t);
+      em.persist(cash);
+      em.persist(card);
 
       em.getTransaction().commit();
     } finally {
