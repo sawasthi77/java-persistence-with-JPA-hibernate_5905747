@@ -46,7 +46,7 @@ public class Main {
     // compositionWithAssociation(emf);
     // compositionWithEmbadable(emf);
     // writeJPQLQuerry(emf);
-    innerJoinWithJPQL(emf);
+    joinsWithJPQL(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -433,7 +433,7 @@ public class Main {
     }
   }
 
-  private static void innerJoinWithJPQL(EntityManagerFactory emf) {
+  private static void joinsWithJPQL(EntityManagerFactory emf) {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
