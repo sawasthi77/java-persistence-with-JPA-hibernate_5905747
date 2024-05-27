@@ -3,6 +3,7 @@ package com.mycompany.app;
 import java.util.List;
 import java.util.Set;
 
+import com.mycompany.app.dto.BooksAndAuthors;
 import com.mycompany.app.entities.Address;
 import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
@@ -45,7 +46,8 @@ public class Main {
     // tablePerClassStrategy(emf);
     // compositionWithAssociation(emf);
     // compositionWithEmbadable(emf);
-    writeJPQLQuerry(emf);
+    // writeJPQLQuerry(emf);
+    joinsWithJPQL(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -424,6 +426,29 @@ public class Main {
 
       for (BookType bt : bookTypes) {
         System.out.println(bt);
+      }
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void joinsWithJPQL(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+    try {
+      em.getTransaction().begin();
+
+      String s = """
+            SELECT NEW com.mycompany.app.dto.BooksAndAuthors(book, author, address) FROM Book book LEFT JOIN book.author author
+          """;
+
+      TypedQuery<BooksAndAuthors> query = em.createQuery(s, BooksAndAuthors.class);
+
+      List<BooksAndAuthors> result = query.getResultList();
+
+      for (BooksAndAuthors r : result) {
+        System.out.println(r.book() + " " + r.author() + " " + r.address());
       }
 
       em.getTransaction().commit();
