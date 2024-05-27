@@ -414,6 +414,18 @@ public class Main {
     try {
       em.getTransaction().begin();
 
+      TypedQuery<BookType> q = em.createQuery(
+          "SELECT bt FROM BookType bt WHERE bt.subCode = :subCode AND bt.name LIKE :name", BookType.class);
+
+      q.setParameter("subCode", "SC001");
+      q.setParameter("name", "Fiction%");
+
+      List<BookType> bookTypes = q.getResultList();
+
+      for (BookType bt : bookTypes) {
+        System.out.println(bt);
+      }
+
       em.getTransaction().commit();
     } finally {
       em.close();
