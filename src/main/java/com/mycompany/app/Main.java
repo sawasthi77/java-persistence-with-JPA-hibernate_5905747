@@ -465,6 +465,24 @@ public class Main {
 
       em.getTransaction().begin();
 
+      TypedQuery<BookType> q = em.createNamedQuery("bookType.findAll", BookType.class);
+      List<BookType> bookTypes = q.getResultList();
+
+      for (BookType bt : bookTypes) {
+        System.out.println(bt);
+      }
+
+      TypedQuery<BookType> q2 = em.createNamedQuery("bookType.findBySubcodeAndName", BookType.class);
+
+      q2.setParameter("subCode", "SC002");
+      q2.setParameter("name", "Fiction%");
+
+      List<BookType> result2 = q2.getResultList();
+
+      for (BookType bt : result2) {
+        System.out.println(bt);
+      }
+
       em.getTransaction().commit();
 
     } finally {
