@@ -45,7 +45,8 @@ public class Main {
     // tablePerClassStrategy(emf);
     // compositionWithAssociation(emf);
     // compositionWithEmbadable(emf);
-    writeJPQLQuerry(emf);
+    // writeJPQLQuerry(emf);
+    innerJoinWithJPQL(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -425,6 +426,17 @@ public class Main {
       for (BookType bt : bookTypes) {
         System.out.println(bt);
       }
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void innerJoinWithJPQL(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+    try {
+      em.getTransaction().begin();
 
       em.getTransaction().commit();
     } finally {
