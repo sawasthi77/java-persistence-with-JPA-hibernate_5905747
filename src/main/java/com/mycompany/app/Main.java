@@ -6,6 +6,7 @@ import java.util.Set;
 import com.mycompany.app.entities.Address;
 import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
+import com.mycompany.app.entities.BookType;
 import com.mycompany.app.entities.CardPayment;
 import com.mycompany.app.entities.CashPayment;
 import com.mycompany.app.entities.Category;
@@ -21,6 +22,8 @@ import com.mycompany.app.entities.keys.ItemKey;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 public class Main {
   public static void main(String[] args) {
@@ -41,8 +44,8 @@ public class Main {
     // joinedTableStrategy(emf);
     // tablePerClassStrategy(emf);
     // compositionWithAssociation(emf);
-    compositionWithEmbadable(emf);
-
+    // compositionWithEmbadable(emf);
+    writeJPQLQuerry(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -398,6 +401,30 @@ public class Main {
       author.setAddress(address);
 
       em.persist(author);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void writeJPQLQuerry(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      TypedQuery<BookType> q = em.createQuery(
+          "SELECT bt FROM BookType bt WHERE bt.subCode = :subCode AND bt.name LIKE :name", BookType.class);
+
+      q.setParameter("subCode", "SC001");
+      q.setParameter("name", "Fiction%");
+
+      List<BookType> bookTypes = q.getResultList();
+
+      for (BookType bt : bookTypes) {
+        System.out.println(bt);
+      }
 
       em.getTransaction().commit();
     } finally {
