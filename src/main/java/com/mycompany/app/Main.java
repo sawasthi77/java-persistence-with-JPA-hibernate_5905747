@@ -47,7 +47,8 @@ public class Main {
     // compositionWithAssociation(emf);
     // compositionWithEmbadable(emf);
     // writeJPQLQuerry(emf);
-    joinsWithJPQL(emf);
+    // joinsWithJPQL(emf);
+    namedQuerries(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -452,6 +453,20 @@ public class Main {
       }
 
       em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void namedQuerries(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+
+      em.getTransaction().begin();
+
+      em.getTransaction().commit();
+
     } finally {
       em.close();
     }
