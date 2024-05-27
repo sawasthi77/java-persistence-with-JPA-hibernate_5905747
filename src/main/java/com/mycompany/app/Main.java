@@ -47,7 +47,8 @@ public class Main {
     // compositionWithAssociation(emf);
     // compositionWithEmbadable(emf);
     // writeJPQLQuerry(emf);
-    joinsWithJPQL(emf);
+    // joinsWithJPQL(emf);
+    namedQuerries(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -452,6 +453,38 @@ public class Main {
       }
 
       em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void namedQuerries(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+
+      em.getTransaction().begin();
+
+      TypedQuery<BookType> q = em.createNamedQuery("bookType.findAll", BookType.class);
+      List<BookType> bookTypes = q.getResultList();
+
+      for (BookType bt : bookTypes) {
+        System.out.println(bt);
+      }
+
+      TypedQuery<BookType> q2 = em.createNamedQuery("bookType.findBySubcodeAndName", BookType.class);
+
+      q2.setParameter("subCode", "SC002");
+      q2.setParameter("name", "Fiction%");
+
+      List<BookType> result2 = q2.getResultList();
+
+      for (BookType bt : result2) {
+        System.out.println(bt);
+      }
+
+      em.getTransaction().commit();
+
     } finally {
       em.close();
     }
