@@ -1,5 +1,6 @@
 package com.mycompany.app.entities;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -33,6 +34,8 @@ public class Book {
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
   private List<Review> reviews;
+
+  private BigDecimal price;
 
   public int getId() {
     return id;
@@ -72,6 +75,14 @@ public class Book {
 
   public void setReviews(List<Review> reviews) {
     this.reviews = reviews;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
   }
 
   @Override

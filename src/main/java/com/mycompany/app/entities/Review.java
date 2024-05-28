@@ -24,6 +24,8 @@ public class Review {
   @JoinColumn(name = "book_id")
   private Book book;
 
+  private int rating;
+
   public int getId() {
     return id;
   }
@@ -48,9 +50,17 @@ public class Review {
     this.book = book;
   }
 
+  public int getRating() {
+    return rating;
+  }
+
+  public void setRating(int rating) {
+    this.rating = rating;
+  }
+
   @Override
   public String toString() {
-    return "Review [id=" + id + ", comment=" + comment + "]";
+    return "Review [id=" + id + ", comment=" + comment + ", book=" + book + ", rating=" + rating + "]";
   }
 
   @Override
@@ -59,6 +69,8 @@ public class Review {
     int result = 1;
     result = prime * result + id;
     result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+    result = prime * result + ((book == null) ? 0 : book.hashCode());
+    result = prime * result + rating;
     return result;
   }
 
@@ -78,6 +90,14 @@ public class Review {
         return false;
     } else if (!comment.equals(other.comment))
       return false;
+    if (book == null) {
+      if (other.book != null)
+        return false;
+    } else if (!book.equals(other.book))
+      return false;
+    if (rating != other.rating)
+      return false;
     return true;
   }
+
 }
