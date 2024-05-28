@@ -570,25 +570,6 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      // String s = """
-      // SELECT NEW com.mycompany.app.dto.BooksAndAuthors(book, author, address) FROM
-      // Book book LEFT JOIN book.author author
-      // ORDER BY author.name
-      // """;
-
-      String s = """
-            SELECT NEW com.mycompany.app.dto.BooksAndAuthors(book, author, address) FROM Book book LEFT JOIN book.author author
-            ORDER BY author.name DESC
-          """;
-
-      TypedQuery<BooksAndAuthors> query = em.createQuery(s, BooksAndAuthors.class);
-
-      List<BooksAndAuthors> result = query.getResultList();
-
-      for (BooksAndAuthors r : result) {
-        System.out.println(r.author() + " " + r.book());
-      }
-
       em.getTransaction().commit();
     } finally {
       em.close();
@@ -601,22 +582,6 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      // String s = """
-      // SELECT r.book.name, AVG(r.rating) FROM Review r
-      // GROUP BY r.book.name
-      // """;
-      String s = """
-          SELECT r.book.author.name, AVG(r.rating) FROM Review r
-          GROUP BY r.book.author.name
-          """;
-
-      TypedQuery<Object[]> query = em.createQuery(s, Object[].class);
-
-      // query.getResultList().forEach(o -> System.out.println("Average rating by book
-      // " + o[0] + " " + o[1]));
-
-      query.getResultList().forEach(o -> System.out.println("Average rating by author " + o[0] + " " + o[1]));
-
       em.getTransaction().commit();
     } finally {
       em.close();
@@ -628,16 +593,6 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-
-      String s = """
-          SELECT r.book.author.name, AVG(r.rating) FROM Review r
-          GROUP BY r.book.author.name
-          HAVING AVG(r.rating) > 3
-          """;
-
-      TypedQuery<Object[]> query = em.createQuery(s, Object[].class);
-
-      query.getResultList().forEach(o -> System.out.println("Average rating by author " + o[0] + " " + o[1]));
 
       em.getTransaction().commit();
     } finally {
