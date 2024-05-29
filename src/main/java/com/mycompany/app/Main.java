@@ -652,12 +652,6 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      String s = "SELECT * FROM book";
-
-      Query q = em.createNativeQuery(s, Book.class);
-
-      q.getResultList().forEach(r -> System.out.println(r));
-
       em.getTransaction().commit();
     } finally {
       em.close();
