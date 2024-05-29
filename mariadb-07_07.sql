@@ -15,16 +15,6 @@ ALTER TABLE IF EXISTS author
 ADD COLUMN street VARCHAR(255),
   ADD COLUMN city VARCHAR(255),
   ADD COLUMN postal_code VARCHAR(255);
-CREATE TABLE IF NOT EXISTS review(
-  review_id INT AUTO_INCREMENT PRIMARY KEY,
-  comment VARCHAR(255)
-);
-ALTER TABLE IF EXISTS review
-ADD COLUMN book_id INT;
-ALTER TABLE IF EXISTS review
-ADD COLUMN rating INT;
-ALTER TABLE review
-ADD CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES book(book_id);
 INSERT INTO book_type(type_code, type_subcode, type_name)
 values ("C001", "SC001", "Fiction-Horror"),
   ("C001", "SC002", "Fiction-Mistry"),
@@ -42,10 +32,3 @@ values ("Book1", "111-1111", 1, 1000),
   ("Book3", "333-3333", 2, 2000),
   ("Book4", "444-444", 3, 1000),
   ("Book5", "555-555", 2, 1100);
-INSERT INTO review(comment, book_id, rating)
-VALUES("Excellent!", 1, 5),
-  ("Very good", 1, 4),
-  ("Good", 2, 3),
-  ("Not too bad", 3, 3),
-  ("Not too bad", 4, 3),
-  ("Not too bad", 5, 3);
