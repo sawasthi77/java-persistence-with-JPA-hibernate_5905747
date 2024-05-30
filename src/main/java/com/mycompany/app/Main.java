@@ -20,6 +20,8 @@ import com.mycompany.app.entities.NonFiction;
 import com.mycompany.app.entities.Review;
 import com.mycompany.app.entities.User;
 import com.mycompany.app.entities.keys.ItemKey;
+import com.mycompany.app.repositorypattern.BookRepository;
+import com.mycompany.app.repositorypattern.BookRepositoryImpl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -58,7 +60,8 @@ public class Main {
     // groupBy(emf);
     // having(emf);
     // nativeQuerries(emf);
-    criteriaQuerries(emf);
+    // criteriaQuerries(emf);
+    useRepository(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -703,6 +706,45 @@ public class Main {
       query2.getResultList().forEach(r -> System.out.println(r[0] + " " + r[1] + " " + r[2]));
 
       em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void useRepository(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      BookRepository repository = new BookRepositoryImpl(em);
+
+      // ---add()---
+      Book b = new Book();
+      b.setName("New book from repository");
+      b.setIsbn("8765-8987");
+      b.setPrice(new BigDecimal(2500));
+      Author a = em.find(Author.class, 1);
+      b.setAuthor(a);
+
+      repository.add(b);
+
+      // ---remove()---
+      repository.remove(b);
+
+      // ---querry---
+      Book result = repository.getBookById(1);
+      System.out.println(result);
+
+      result = repository.getBookByName("Book1");
+      System.out.println(result);
+
+      List<Book> results = repository.getBooksByAuthor("Jane");
+      results.forEach(o -> System.out.println(o));
+
+      // ---update---
+      result.setPrice(b.getPrice().add(new BigDecimal(100)));
+
+      repository.update(result);
+
     } finally {
       em.close();
     }
