@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
