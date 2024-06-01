@@ -23,9 +23,6 @@ public class Student {
   @Column(name = "student_name")
   private String name;
 
-  @ManyToMany(mappedBy = "students")
-  private List<ArtClass> classes;
-
   public int getId() {
     return id;
   }
@@ -41,18 +38,4 @@ public class Student {
   public void setName(String name) {
     this.name = name;
   }
-
-  public List<ArtClass> getClasses() {
-    return classes;
-  }
-
-  public void setClasses(List<ArtClass> classes) {
-    this.classes = classes;
-  }
-
-  @Override
-  public String toString() {
-    return "Student [id=" + id + ", name=" + name + "]";
-  }
-
 }
