@@ -10,10 +10,10 @@ public class Main {
   public static void main(String[] args) {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("artclass_persistence_unit");
 
-    create(emf);
+    // create(emf);
     update(emf);
     attachAndDetach(emf);
-
+    remove(emf);
   }
 
   private static void create(EntityManagerFactory emf) {
