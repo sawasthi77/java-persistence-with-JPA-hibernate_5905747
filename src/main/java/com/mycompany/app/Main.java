@@ -9,6 +9,7 @@ import com.mycompany.app.entities.Teacher;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 public class Main {
   public static void main(String[] args) {
@@ -18,9 +19,10 @@ public class Main {
     // update(emf);
     // attachAndDetach(emf);
     // remove(emf);
-    oneToOneRelationship(emf);
-    oneToManyRelationship(emf);
-    manyToManyRelationship(emf);
+    // oneToOneRelationship(emf);
+    // oneToManyRelationship(emf);
+    // manyToManyRelationship(emf);
+    writeQuerries(emf);
   }
 
   private static void create(EntityManagerFactory emf) {
@@ -170,6 +172,39 @@ public class Main {
       em.persist(c2);
 
       em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void writeQuerries(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      String s1 = "SELECT s FROM Student s";
+      TypedQuery<Student> q1 = em.createQuery(s1, Student.class);
+      q1.getResultList().forEach(r -> System.out.println(r));
+
+      String s2 = "SELECT c.students FROM ArtClass c WHERE c.dayOfWeek = 'Monday'";
+      TypedQuery<Student> q2 = em.createQuery(s2, Student.class);
+      q2.getResultList().forEach(r -> System.out.println(r));
+
+      String s3 = "SELECT AVG(r.rating) FROM Review r WHERE r.teacher.name = 'White'";
+      TypedQuery<Double> q3 = em.createQuery(s3, Double.class);
+      System.out.println(q3.getSingleResult());
+
+      String s4 = "SELECT t.name, AVG(r.rating) FROM Review r INNER JOIN r.teacher t GROUP BY t.name";
+      TypedQuery<Object[]> q4 = em.createQuery(s4, Object[].class);
+      q4.getResultList().forEach(r -> System.out.println(r[0] + " " + r[1]));
+
+      String s5 = "SELECT t.name, AVG(r.rating) FROM Review r INNER JOIN r.teacher t GROUP BY t.name ORDER BY AVG(r.rating) DESC";
+      TypedQuery<Object[]> q5 = em.createQuery(s5, Object[].class);
+      q5.getResultList().forEach(r -> System.out.println(r[0] + " " + r[1]));
+
+      String s6 = "SELECT t.name, AVG(r.rating) FROM Review r INNER JOIN r.teacher t GROUP BY t.name HAVING AVG(r.rating) > 3 ORDER BY AVG(r.rating) DESC";
+      TypedQuery<Object[]> q6 = em.createQuery(s6, Object[].class);
+      q6.getResultList().forEach(r -> System.out.println(r[0] + " " + r[1]));
+
     } finally {
       em.close();
     }
