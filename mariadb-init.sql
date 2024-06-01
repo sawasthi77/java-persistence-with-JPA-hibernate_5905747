@@ -23,19 +23,15 @@ CREATE TABLE IF NOT EXISTS student_class(
   FOREIGN KEY (student_id) REFERENCES student(student_id),
   FOREIGN KEY (class_id) REFERENCES class(class_id)
 );
-ALTER TABLE IF EXISTS class
-ADD COLUMN teacher_id INT;
-ALTER TABLE class
-ADD CONSTRAINT fk_teacher_id FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
-ALTER TABLE IF EXISTS teacher
-ADD COLUMN class_id INT;
-ALTER TABLE teacher
-ADD CONSTRAINT fk_class_id FOREIGN KEY (class_id) REFERENCES class(class_id);
 CREATE TABLE IF NOT EXISTS review(
   review_id INT AUTO_INCREMENT PRIMARY KEY,
   teacher_id INT,
   comment VARCHAR(255),
   rating INT
 );
+ALTER TABLE IF EXISTS class
+ADD COLUMN teacher_id INT;
+ALTER TABLE class
+ADD CONSTRAINT fk_teacher_id_class FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
 ALTER TABLE review
-ADD CONSTRAINT fk_teacher_id FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
+ADD CONSTRAINT fk_teacher_id_review FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
