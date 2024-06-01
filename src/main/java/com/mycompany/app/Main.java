@@ -2,6 +2,7 @@ package com.mycompany.app;
 
 import java.util.List;
 import com.mycompany.app.entities.ArtClass;
+import com.mycompany.app.entities.Review;
 import com.mycompany.app.entities.Student;
 import com.mycompany.app.entities.Teacher;
 
@@ -17,7 +18,8 @@ public class Main {
     // update(emf);
     // attachAndDetach(emf);
     // remove(emf);
-    // oneToOneRelationship(emf);
+    oneToOneRelationship(emf);
+    oneToManyRelationship(emf);
     manyToManyRelationship(emf);
   }
 
@@ -96,6 +98,35 @@ public class Main {
       c.setTeacher(t);
 
       em.persist(c);
+      em.persist(t);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void oneToManyRelationship(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      Teacher t = new Teacher();
+      t.setName("Woods");
+
+      Review r1 = new Review();
+      r1.setComment("Excellent!");
+      r1.setRating(5);
+      r1.setTeacher(t);
+
+      Review r2 = new Review();
+      r2.setComment("Good!");
+      r2.setRating(4);
+      r2.setTeacher(t);
+
+      t.setReviews(List.of(r1, r2));
+
       em.persist(t);
 
       em.getTransaction().commit();
