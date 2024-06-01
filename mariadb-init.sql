@@ -31,3 +31,11 @@ ALTER TABLE IF EXISTS teacher
 ADD COLUMN class_id INT;
 ALTER TABLE teacher
 ADD CONSTRAINT fk_class_id FOREIGN KEY (class_id) REFERENCES class(class_id);
+CREATE TABLE IF NOT EXISTS review(
+  review_id INT AUTO_INCREMENT PRIMARY KEY,
+  teacher_id INT,
+  comment VARCHAR(255),
+  rating INT
+);
+ALTER TABLE review
+ADD CONSTRAINT fk_teacher_id FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
