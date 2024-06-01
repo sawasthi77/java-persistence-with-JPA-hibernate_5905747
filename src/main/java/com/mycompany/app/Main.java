@@ -14,9 +14,10 @@ public class Main {
   public static void main(String[] args) {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("artclass_persistence_unit");
 
-    create(emf);
-    update(emf);
-    attach(emf);
+    // create(emf);
+    // update(emf);
+    // attachAndDetach(emf);
+    // remove(emf);
     // oneToOneRelationship(emf);
     manyToManyRelationship(emf);
   }
@@ -49,7 +50,7 @@ public class Main {
     }
   }
 
-  private static void attach(EntityManagerFactory emf) {
+  private static void attachAndDetach(EntityManagerFactory emf) {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
@@ -57,6 +58,22 @@ public class Main {
       Student s2 = new Student();
       s2.setName("Mary");
       em.merge(s2);
+      em.detach(s2);
+      s2.setName("Sue");
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void remove(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+      Student s = em.find(Student.class, 1);
+      em.remove(s);
 
       em.getTransaction().commit();
     } finally {
