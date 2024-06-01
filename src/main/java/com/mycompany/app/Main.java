@@ -37,4 +37,13 @@ public class Main {
   private static void attach(EntityManagerFactory emf) {
 
   }
+
+  private static void detach(EntityManagerFactory emf) {
+
+  }
+
+  private static void remove(EntityManagerFactory emf) {
+
+  }
+
 }
