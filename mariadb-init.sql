@@ -27,7 +27,3 @@ ALTER TABLE IF EXISTS class
 ADD COLUMN teacher_id INT;
 ALTER TABLE class
 ADD CONSTRAINT fk_teacher_id FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
-ALTER TABLE IF EXISTS teacher
-ADD COLUMN class_id INT;
-ALTER TABLE teacher
-ADD CONSTRAINT fk_class_id FOREIGN KEY (class_id) REFERENCES class(class_id);
