@@ -1,11 +1,14 @@
 package com.mycompany.app.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class Student {
 
   @Column(name = "student_name")
   private String name;
+
+  @ManyToMany(mappedBy = "students")
+  private List<ArtClass> classes;
 
   public int getId() {
     return id;
@@ -36,5 +42,17 @@ public class Student {
     this.name = name;
   }
 
-  
+  public List<ArtClass> getClasses() {
+    return classes;
+  }
+
+  public void setClasses(List<ArtClass> classes) {
+    this.classes = classes;
+  }
+
+  @Override
+  public String toString() {
+    return "Student [id=" + id + ", name=" + name + "]";
+  }
+
 }

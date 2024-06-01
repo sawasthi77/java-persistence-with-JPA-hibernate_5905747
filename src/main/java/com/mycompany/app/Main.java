@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import java.util.List;
-
 import com.mycompany.app.entities.ArtClass;
 import com.mycompany.app.entities.Student;
 import com.mycompany.app.entities.Teacher;
@@ -135,6 +134,9 @@ public class Main {
 
       c1.setStudents(List.of(s1, s2));
       c2.setStudents(List.of(s1, s2));
+
+      s1.setClasses(List.of(c1, c2));
+      s2.setClasses(List.of(c1, c2));
 
       em.persist(c1);
       em.persist(c2);
