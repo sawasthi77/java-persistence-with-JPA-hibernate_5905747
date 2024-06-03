@@ -57,4 +57,41 @@ public class Review {
   public void setTeacher(Teacher teacher) {
     this.teacher = teacher;
   }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + id;
+    result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+    result = prime * result + rating;
+    result = prime * result + ((teacher == null) ? 0 : teacher.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Review other = (Review) obj;
+    if (id != other.id)
+      return false;
+    if (comment == null) {
+      if (other.comment != null)
+        return false;
+    } else if (!comment.equals(other.comment))
+      return false;
+    if (rating != other.rating)
+      return false;
+    if (teacher == null) {
+      if (other.teacher != null)
+        return false;
+    } else if (!teacher.equals(other.teacher))
+      return false;
+    return true;
+  }
 }
