@@ -8,6 +8,6 @@ public class Main {
   public static void main(String[] args) {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("artclass_persistence_unit");
 
-    EntityManager em = emf.createEntityManager(); // Represent the persistence context
+    EntityManager em = emf.createEntityManager();
   }
 }
