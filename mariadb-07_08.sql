@@ -31,7 +31,6 @@ values(1, 1),
   (4, 1),
   (4, 2),
   (4, 3);
-
 INSERT INTO review(comment, rating, teacher_id)
 values("Very Good", 4, 1),
   ("Excellent!", 5, 1),
