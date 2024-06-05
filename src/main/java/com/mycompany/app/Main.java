@@ -27,8 +27,9 @@ public class Main {
     // createEntityWithComposedPK(emf);
     // oneToOneRelationship(emf);
     // oneToManyRelationship(emf);
-    manyToManyRelationship(emf);
-
+    // manyToManyRelationship(emf);
+    mappedSuperclassStrategy(emf);
+    singleTableStrategy(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
@@ -235,6 +236,52 @@ public class Main {
 
       em.persist(group1);
       em.persist(group2);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void mappedSuperclassStrategy(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      // Student s = new Student();
+      // s.setName("John");
+      // s.setStudentCode("S001");
+
+      // Teacher t = new Teacher();
+      // t.setName("David");
+      // t.setTeacherCode("T001");
+
+      // em.persist(s);
+      // em.persist(t);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void singleTableStrategy(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      // Student2 s = new Student2();
+      // s.setName("John");
+      // s.setStudentCode("S001");
+
+      // Teacher2 t = new Teacher2();
+      // t.setName("David");
+      // t.setTeacherCode("T001");
+
+      // em.persist(s);
+      // em.persist(t);
 
       em.getTransaction().commit();
     } finally {
