@@ -183,14 +183,23 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book book = new Book();
-      book.setName("book 123");
-      book.setIsbn("123-123");
+      // Book book = new Book();
+      // book.setName("book 123");
+      // book.setIsbn("123-123");
 
-      Author author = em.find(Author.class, 1);
-      book.setAuthor(author);
+      // Author author = em.find(Author.class, 1);
+      // book.setAuthor(author);
 
-      em.persist(book);
+      // Review review1 = new Review();
+      // review1.setComment("This book in good");
+      // review1.setBook(book);
+      // Review review2 = new Review();
+      // review2.setComment("This book is lovely");
+      // review2.setBook(book);
+
+      // book.setReviews(List.of(review1, review2));
+
+      // em.persist(book);
 
       em.getTransaction().commit();
 
