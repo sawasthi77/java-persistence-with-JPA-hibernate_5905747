@@ -498,6 +498,62 @@ public class Main {
     try {
       em.getTransaction().begin();
 
+      // ---------COUNT() function-------
+
+      // String s = "SELECT COUNT(b) FROM Book b WHERE b.author.name = :name";
+      // Query query = em.createQuery(s);
+      // query.setParameter("name", "Allen");
+      // Long numberOfBooks = (Long) query.getSingleResult();
+      // System.out.println("Number of book of author " + numberOfBooks);
+
+      // ---------SUM() function-------
+
+      // String s = "SELECT SUM(b.price) FROM Book b WHERE b.author.name = :name";
+
+      // TypedQuery<BigDecimal> query = em.createQuery(s, BigDecimal.class);
+
+      // query.setParameter("name", "Jane");
+
+      // BigDecimal totalCost = query.getSingleResult();
+
+      // System.out.println("Total cost of books of author " + totalCost);
+
+      // ---------MIN() function-------
+
+      // String s = "SELECT MIN(r.rating) FROM Review r WHERE r.book.name = :name";
+
+      // TypedQuery<Integer> query = em.createQuery(s, Integer.class);
+
+      // query.setParameter("name", "Book1");
+
+      // int minimumRating = query.getSingleResult();
+
+      // System.out.println("Minimum rating for book " + minimumRating);
+
+      // ---------MAX() function-------
+
+      // String s = "SELECT MAX(r.rating) FROM Review r WHERE r.book.name = :name";
+
+      // TypedQuery<Integer> query = em.createQuery(s, Integer.class);
+
+      // query.setParameter("name", "Book1");
+
+      // int minimumRating = query.getSingleResult();
+
+      // System.out.println("Maximum rating for book " + minimumRating);
+
+      // ---------AVG() function-------
+
+      // String s = "SELECT AVG(r.rating) FROM Review r WHERE r.book.name = :name";
+
+      // TypedQuery<Double> query = em.createQuery(s, Double.class);
+
+      // query.setParameter("name", "Book1");
+
+      // Double minimumRating = query.getSingleResult();
+
+      // System.out.println("Avegrate rating for book " + minimumRating);
+
       em.getTransaction().commit();
 
     } finally {
