@@ -439,6 +439,11 @@ public class Main {
     try {
       em.getTransaction().begin();
 
+      // String s = """
+      // SELECT NEW com.mycompany.app.dto.BooksAndAuthors(book, author, address) FROM
+      // Book book INNER JOIN book.author author
+      // """;
+
       String s = """
             SELECT NEW com.mycompany.app.dto.BooksAndAuthors(book, author, address) FROM Book book LEFT JOIN book.author author
           """;
