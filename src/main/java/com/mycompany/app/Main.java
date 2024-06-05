@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.mycompany.app.entities.Author;
 import com.mycompany.app.entities.Book;
+import com.mycompany.app.entities.CardPayment;
+import com.mycompany.app.entities.CashPayment;
 import com.mycompany.app.entities.Group;
 import com.mycompany.app.entities.Item;
 import com.mycompany.app.entities.Review;
@@ -297,12 +299,21 @@ public class Main {
 
     try {
       em.getTransaction().begin();
+      // Fiction f = new Fiction();
+      // f.setCode("F001");
+      // f.setSetting("Forest");
+
+      // NonFiction nf = new NonFiction();
+      // nf.setCode("NF001");
+      // nf.setTopic("Science");
+
+      // em.persist(f);
+      // em.persist(nf);
 
       em.getTransaction().commit();
     } finally {
       em.close();
     }
-
   }
 
   private static void tablePerClassStrategy(EntityManagerFactory emf) {
@@ -310,6 +321,19 @@ public class Main {
 
     try {
       em.getTransaction().begin();
+
+      // CardPayment card = new CardPayment();
+      // card.setId(100);
+      // card.setAmount(1000);
+      // card.setCardNumber("1234 5678 5677 3456");
+
+      // CashPayment cash = new CashPayment();
+      // cash.setId(101);
+      // cash.setAmount(2000);
+      // cash.setCode("CA001");
+
+      // em.persist(cash);
+      // em.persist(card);
 
       em.getTransaction().commit();
     } finally {
