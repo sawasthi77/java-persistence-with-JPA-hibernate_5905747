@@ -351,6 +351,25 @@ public class Main {
     try {
       em.getTransaction().begin();
 
+      // Field f1 = new Field();
+      // f1.setName("Music");
+      // Field f2 = new Field();
+      // f2.setName("Art");
+
+      // Category c1 = new Category();
+      // c1.setName("History");
+      // Category c2 = new Category();
+      // c2.setName("New Advancements");
+
+      // f1.setCategories(Set.of(c1, c2));
+      // f2.setCategories(Set.of(c1, c2));
+
+      // c1.setFields(Set.of(f1, f2));
+      // c2.setFields(Set.of(f1, f2));
+
+      // em.persist(f1);
+      // em.persist(f2);
+
       em.getTransaction().commit();
     } finally {
       em.close();
@@ -362,6 +381,18 @@ public class Main {
 
     try {
       em.getTransaction().begin();
+
+      // Author author = new Author();
+      // author.setName("William");
+
+      // Address address = new Address();
+      // address.setStreet("1st street");
+      // address.setCity("London");
+      // address.setPostalCode("12345");
+
+      // author.setAddress(address);
+
+      // em.persist(author);
 
       em.getTransaction().commit();
     } finally {
