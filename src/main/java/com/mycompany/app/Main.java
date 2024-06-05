@@ -414,6 +414,9 @@ public class Main {
     try {
       em.getTransaction().begin();
 
+      // TypedQuery<BookType> q = em.createQuery(
+      // "SELECT bt FROM BookType bt", BookType.class);
+
       TypedQuery<BookType> q = em.createQuery(
           "SELECT bt FROM BookType bt WHERE bt.subCode = :subCode AND bt.name LIKE :name", BookType.class);
 
