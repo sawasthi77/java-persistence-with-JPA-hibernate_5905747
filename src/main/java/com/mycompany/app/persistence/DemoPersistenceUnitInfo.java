@@ -42,6 +42,12 @@ public class DemoPersistenceUnitInfo implements PersistenceUnitInfo {
     return dataSource;
   }
 
+  // Remember to implement this method. If not things will not work
+  @Override
+  public List<String> getManagedClassNames() {
+    return null;
+  }
+
   @Override
   public void addTransformer(ClassTransformer transformer) {
     // TODO Auto-generated method stub
@@ -69,12 +75,6 @@ public class DemoPersistenceUnitInfo implements PersistenceUnitInfo {
   @Override
   public DataSource getJtaDataSource() {
     // TODO Auto-generated method stub
-    return null;
-  }
-
-  // Remember to implement this method. If not things will not work
-  @Override
-  public List<String> getManagedClassNames() {
     return null;
   }
 
