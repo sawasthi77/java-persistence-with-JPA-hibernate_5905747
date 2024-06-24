@@ -18,6 +18,31 @@ import jakarta.persistence.spi.PersistenceUnitTransactionType;
 public class DemoPersistenceUnitInfo implements PersistenceUnitInfo {
 
   @Override
+  public String getPersistenceUnitName() {
+    return "library_persistence_unit";
+  }
+
+  @Override
+  public String getPersistenceProviderClassName() {
+    return "org.hibernate.jpa.HibernatePersistenceProvider";
+  }
+
+  @Override
+  public PersistenceUnitTransactionType getTransactionType() {
+    return PersistenceUnitTransactionType.RESOURCE_LOCAL;
+  }
+
+  @Override
+  public DataSource getNonJtaDataSource() {
+    HikariDataSource dataSource = new HikariDataSource();
+
+    dataSource.setJdbcUrl("jdbc:mariadb://localhost:3306/library");
+    dataSource.setUsername("root");
+    dataSource.setPassword("test");
+    return dataSource;
+  }
+
+  @Override
   public void addTransformer(ClassTransformer transformer) {
     // TODO Auto-generated method stub
 
@@ -66,26 +91,6 @@ public class DemoPersistenceUnitInfo implements PersistenceUnitInfo {
   }
 
   @Override
-  public DataSource getNonJtaDataSource() {
-    HikariDataSource dataSource = new HikariDataSource();
-
-    dataSource.setJdbcUrl("jdbc:mariadb://localhost:3306/library");
-    dataSource.setUsername("root");
-    dataSource.setPassword("test");
-    return dataSource;
-  }
-
-  @Override
-  public String getPersistenceProviderClassName() {
-    return "org.hibernate.jpa.HibernatePersistenceProvider";
-  }
-
-  @Override
-  public String getPersistenceUnitName() {
-    return "library_persistence_unit";
-  }
-
-  @Override
   public URL getPersistenceUnitRootUrl() {
     // TODO Auto-generated method stub
     return null;
@@ -107,11 +112,6 @@ public class DemoPersistenceUnitInfo implements PersistenceUnitInfo {
   public SharedCacheMode getSharedCacheMode() {
     // TODO Auto-generated method stub
     return null;
-  }
-
-  @Override
-  public PersistenceUnitTransactionType getTransactionType() {
-    return PersistenceUnitTransactionType.RESOURCE_LOCAL;
   }
 
   @Override
