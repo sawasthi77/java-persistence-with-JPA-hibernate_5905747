@@ -15,10 +15,10 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book b = new Book();
-      b.setName("my book");
-      b.setIsbn("123-456");
-      em.persist(b);
+      Book book = new Book();
+      book.setName("my book");
+      book.setIsbn("123-456");
+      em.persist(book);
 
       em.getTransaction().commit();
     } finally {
