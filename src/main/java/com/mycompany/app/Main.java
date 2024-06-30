@@ -21,10 +21,10 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book b = new Book();
-      b.setName("my book3");
-      b.setIsbn("333-456");
-      em.persist(b);
+      Book book = new Book();
+      book.setName("my book3");
+      book.setIsbn("333-456");
+      em.persist(book);
 
       em.getTransaction().commit();
     } finally {
