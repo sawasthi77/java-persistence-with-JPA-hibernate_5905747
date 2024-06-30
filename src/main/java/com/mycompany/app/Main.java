@@ -21,10 +21,10 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book b = new Book();
-      b.setName("my book3");
-      b.setIsbn("333-456");
-      em.persist(b);
+      Book book = new Book();
+      book.setName("my book3");
+      book.setIsbn("333-456");
+      em.persist(book);
 
       em.getTransaction().commit();
     } finally {
@@ -37,9 +37,9 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book b1 = em.find(Book.class, 1);
-      b1.setName("my new book");
-      System.out.println(b1);
+      Book book1 = em.find(Book.class, 1);
+      book1.setName("my new book");
+      System.out.println(book1);
 
       em.getTransaction().commit();
     } finally {
