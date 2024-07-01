@@ -53,12 +53,12 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book b1 = new Book();
-      b1.setId(1);
-      b1.setName("my newest book");
-      b1.setIsbn("123-456");
-      em.merge(b1);
-      em.detach(b1);
+      Book book1 = new Book();
+      book1.setId(1);
+      book1.setName("my newest book");
+      book1.setIsbn("123-456");
+      em.merge(book1);
+      em.detach(book1);
       // b1.setName("my newest book1");
 
       em.getTransaction().commit();
