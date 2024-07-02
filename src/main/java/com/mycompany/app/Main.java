@@ -89,8 +89,8 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book book1 = em.getReference(Book.class, 1);
-      System.out.println(book1);
+      Book book2 = em.getReference(Book.class, 2);
+      System.out.println(book2);
 
       em.getTransaction().commit();
     } finally {
@@ -103,13 +103,13 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book book1 = em.find(Book.class, 1);
-      System.out.println(book1);
-      book1.setName("some book");
-      System.out.println("Before " + book1);
+      Book book2 = em.find(Book.class, 2);
+      System.out.println(book2);
+      book2.setName("some book");
+      System.out.println("Before " + book2);
 
-      em.refresh(book1);
-      System.out.println("After " + book1);
+      em.refresh(book2);
+      System.out.println("After " + book2);
 
       em.getTransaction().commit();
     } finally {
