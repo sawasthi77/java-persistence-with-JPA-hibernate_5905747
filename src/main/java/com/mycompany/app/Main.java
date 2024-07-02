@@ -72,6 +72,7 @@ public class Main {
 
     try {
       em.getTransaction().begin();
+      Book book1 = em.find(Book.class, 1);
 
       em.getTransaction().commit();
     } finally {
