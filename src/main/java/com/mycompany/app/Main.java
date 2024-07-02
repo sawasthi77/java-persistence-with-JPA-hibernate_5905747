@@ -13,7 +13,9 @@ public class Main {
     // createInstance(emf);
     // findAndUpdateInstance(emf);
     // detachAndReattachInstance(emf);
-    removeInstance(emf);
+    // removeInstance(emf);
+    useGetReference(emf);
+    // useRefresh(emf);
 
   }
 
@@ -74,6 +76,35 @@ public class Main {
       em.getTransaction().begin();
       Book book1 = em.find(Book.class, 1);
       em.remove(book1);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void useGetReference(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+
+      Book book2 = em.getReference(Book.class, 2);
+
+      em.getTransaction().commit();
+    } finally {
+      em.close();
+    }
+  }
+
+  private static void useRefresh(EntityManagerFactory emf) {
+    EntityManager em = emf.createEntityManager();
+
+    try {
+      em.getTransaction().begin();
+      Book book2 = em.find(Book.class, 2);
+      System.out.println(book2);
+      book2.setName("some book");
 
       em.getTransaction().commit();
     } finally {
