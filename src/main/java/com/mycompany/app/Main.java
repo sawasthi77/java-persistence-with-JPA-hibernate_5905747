@@ -28,10 +28,10 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book b = new Book();
-      b.setName("my book3");
-      b.setIsbn("333-456");
-      em.persist(b);
+      Book book = new Book();
+      book.setName("my book3");
+      book.setIsbn("333-456");
+      em.persist(book);
 
       em.getTransaction().commit();
     } finally {
@@ -44,9 +44,9 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book b1 = em.find(Book.class, 1);
-      b1.setName("my new book");
-      System.out.println(b1);
+      Book book1 = em.find(Book.class, 1);
+      book1.setName("my new book");
+      System.out.println(book1);
 
       em.getTransaction().commit();
     } finally {
@@ -59,12 +59,12 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book b1 = new Book();
-      b1.setId(1);
-      b1.setName("my newest book");
-      b1.setIsbn("123-456");
-      em.merge(b1);
-      em.detach(b1);
+      Book book1 = new Book();
+      book1.setId(1);
+      book1.setName("my newest book");
+      book1.setIsbn("123-456");
+      em.merge(book1);
+      em.detach(book1);
 
       em.getTransaction().commit();
     } finally {
@@ -77,8 +77,8 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book b1 = em.find(Book.class, 1);
-      em.remove(b1);
+      Book book1 = em.find(Book.class, 1);
+      em.remove(book1);
 
       em.getTransaction().commit();
     } finally {
@@ -92,8 +92,8 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Book b1 = em.getReference(Book.class, 1);
-      System.out.println(b1);
+      Book book2 = em.getReference(Book.class, 2);
+      System.out.println(book2);
 
       em.getTransaction().commit();
     } finally {
@@ -106,13 +106,13 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Book b1 = em.find(Book.class, 1);
-      System.out.println(b1);
-      b1.setName("some book");
-      System.out.println("Before " + b1);
+      Book book2 = em.find(Book.class, 2);
+      System.out.println(book2);
+      book2.setName("some book");
+      System.out.println("Before " + book2);
 
-      em.refresh(b1);
-      System.out.println("After " + b1);
+      em.refresh(book2);
+      System.out.println("After " + book2);
 
       em.getTransaction().commit();
     } finally {
@@ -125,12 +125,12 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      // BookType bt = new BookType();
-      // bt.setCode("C001");
-      // bt.setSubCode("SC001");
-      // bt.setName("Fiction-Horror");
+      // BookType bookType = new BookType();
+      // bookType.setCode("C001");
+      // bookType.setSubCode("SC001");
+      // bookType.setName("Fiction-Horror");
 
-      // em.persist(bt);
+      // em.persist(bookType);
 
       ItemKey id = new ItemKey();
       id.setCode("ABC");
