@@ -20,10 +20,10 @@ public class Main {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
-      Student s = new Student();
-      s.setName("John");
+      Student student = new Student();
+      student.setName("John");
 
-      em.persist(s);
+      em.persist(student);
       em.getTransaction().commit();
     } finally {
       em.close();
