@@ -156,6 +156,18 @@ public class Main {
     try {
       em.getTransaction().begin();
 
+      // Book book = new Book();
+      // book.setName("another book");
+      // book.setIsbn("1010-111");
+
+      // Author author = new Author();
+      // author.setName("John");
+
+      // book.setAuthor(author);
+
+      // em.persist(book);
+      // em.persist(author);
+
       em.getTransaction().commit();
 
     } finally {
