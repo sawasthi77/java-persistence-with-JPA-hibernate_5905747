@@ -32,8 +32,8 @@ public class Main {
     // manyToManyRelationship(emf);
     // mappedSuperclassStrategy(emf);
     // singleTableStrategy(emf);
-    // joinedTableStrategy(emf);
-    tablePerClassStrategy(emf);
+    joinedTableStrategy(emf);
+    // tablePerClassStrategy(emf);
 
   }
 
