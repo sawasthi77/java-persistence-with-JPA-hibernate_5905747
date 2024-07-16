@@ -14,4 +14,5 @@ values ("Jane", "street1", "London", "12345"),
 INSERT INTO book(book_name, isbn, author_id)
 values ("Book1", "111-1111", 1),
   ("Book2", "222-2222", 1),
-  ("Book3", "333-3333", 2);
+  ("Book3", "333-3333", 2),
+  ("Book4", "444-4444", null);
