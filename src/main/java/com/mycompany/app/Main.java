@@ -51,9 +51,9 @@ public class Main {
     // joinsWithJPQL(emf);
     // namedQuerries(emf);
     // aggregateFunctions(emf);
-    // orderBy(emf);
+    orderBy(emf);
     // groupBy(emf);
-    having(emf);
+    // having(emf);
   }
 
   private static void createInstance(EntityManagerFactory emf) {
