@@ -28,10 +28,10 @@ public class Main {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
-      Student s = new Student();
-      s.setName("John");
+      Student student = new Student();
+      student.setName("John");
 
-      em.persist(s);
+      em.persist(student);
       em.getTransaction().commit();
     } finally {
       em.close();
@@ -43,8 +43,8 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Student s = em.find(Student.class, 1);
-      s.setName("Peter");
+      Student student = em.find(Student.class, 1);
+      student.setName("Peter");
 
       em.getTransaction().commit();
     } finally {
@@ -57,11 +57,11 @@ public class Main {
     try {
       em.getTransaction().begin();
 
-      Student s2 = new Student();
-      s2.setName("Mary");
-      em.merge(s2);
-      em.detach(s2);
-      s2.setName("Sue");
+      Student student2 = new Student();
+      student2.setName("Mary");
+      em.merge(student2);
+      em.detach(student2);
+      student2.setName("Sue");
 
       em.getTransaction().commit();
     } finally {
@@ -74,8 +74,8 @@ public class Main {
 
     try {
       em.getTransaction().begin();
-      Student s = em.find(Student.class, 1);
-      em.remove(s);
+      Student student = em.find(Student.class, 1);
+      em.remove(student);
 
       em.getTransaction().commit();
     } finally {
