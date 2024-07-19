@@ -1,4 +1,5 @@
 Here’s what you need to do in this code challenge:
+
 You should write 6 JPQL queries to retrieve this data.
 1. A list of all the students
 2. A list of students who are attending classes on Monday
