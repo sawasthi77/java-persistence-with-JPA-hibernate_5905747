@@ -730,7 +730,7 @@ public class Main {
       // ---remove()---
       repository.remove(b);
 
-      // ---querry---
+      // ---query---
       Book result = repository.getBookById(1);
       System.out.println(result);
 
