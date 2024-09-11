@@ -1,7 +1,9 @@
-# COURSENAME
-This is the repository for the LinkedIn Learning course `course-name`. The full course is available from [LinkedIn Learning][lil-course-url].
+# Java Persistence with JPA and Hibernate
+This is the repository for the LinkedIn Learning course `Java Persistence with JPA and Hibernate`. The full course is available from [LinkedIn Learning][lil-course-url].
 
-![course-name-alt-text][lil-thumbnail-url] 
+![lil-thumbnail-url] 
+
+<p>Explore the mismatch between object-oriented code and relational tables to understand the need for object-relational mapping (ORM). In this course, instructor Buddhini Samarakkody covers the basics of JPA—shorthand for the Jakarta Persistence API—and shows you how to implement it in the popular ORM framework, Hibernate. Learn how to define an entity, map fields to columns, specify primary and composite keys, utilize annotations, map different types of entity relationships, execute basic CRUD operations, and more. Along the way, Buddhini offers insights on how to work with different types of queries and use a wide variety of constructs to perform key tasks. By the end of this course, you’ll also be equipped with some of the best practices for applying the repository pattern to streamline and optimize your code.</p><p>This course is integrated with GitHub Codespaces, an instant cloud developer environment that offers all the functionality of your favorite IDE without the need for any local machine setup. With GitHub Codespaces, you can get hands-on practice from any machine, at any time-all while using a tool that you'll likely encounter in the workplace. Check out the "Development environment" video to learn how to get started.</p>
 
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
@@ -22,15 +24,18 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+## Instructor
 
+Buddhini Samarakkody
+
+Java Engineer, Author, Instructor
+
+                            
+
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/buddhini-samarakkody?u=104).
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+[lil-course-url]: https://www.linkedin.com/learning/java-persistence-with-jpa-and-hibernate
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQFbxeYYMUEaOA/learning-public-crop_675_1200/learning-public-crop_675_1200/0/1724781695479?e=2147483647&v=beta&t=qCnVR7r748_TMav4LhYA484f2KBl_y4oZvA7TyILlIY
 
